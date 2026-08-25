@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐管理后台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 1.8em;
+        }
+
+        .back-btn {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #764ba2;
+        }
+
+        .github-token-info {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ffc107;
+        }
+
+        .github-token-info h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        .github-token-info p {
+            color: #856404;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .github-token-info a {
+            color: #0066cc;
+            text-decoration: underline;
+        }
+
+        .github-token-info ol {
+            margin-left: 20px;
+            color: #856404;
+            line-height: 1.8;
+        }
+
+        .status-message {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .status-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status-message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .panel h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group small {
+            color: #999;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-input-label {
+            display: block;
+            padding: 12px;
+            background: #f8f9fa;
+            border: 2px dashed #ddd;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-input-label:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+        }
+
+        .file-info {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e7f3ff;
+            border-radius: 5px;
+            font-size: 0.9em;
+            color: #0066cc;
+        }
+
+        .btn {
+            background: #28a745;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: #218838;
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #764ba2;
+        }
+
+        .song-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .song-table th,
+        .song-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .song-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .song-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: #c82333;
+        }
+
+        .song-table img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔒 音乐管理后台（仅管理员）</h1>
+            <a href="index.html" class="back-btn">返回播放器</a>
+        </div>
+
+        <div class="github-token-info">
+            <h3>⚠️ 管理员使用说明</h3>
+            <p><strong>1. 生成 GitHub Personal Access Token：</strong></p>
+            <ol>
+                <li>访问：<a href="https://github.com/settings/tokens/new" target="_blank">GitHub Token 设置</a></li>
+                <li>Note 填写：<code>music-admin</code></li>
+                <li>Expiration 选择：<code>No expiration</code></li>
+                <li>勾选权限：<strong>repo</strong>（完整勾选）</li>
+                <li>点击 <strong>Generate token</strong></li>
+                <li>复制生成的 Token（格式：ghp_xxxxxxxxxx）</li>
+            </ol>
+            <p><strong>2. Token 保存在浏览器本地，不会上传到服务器</strong></p>
+            <p><strong>3. 普通用户访问播放器无需 Token</strong></p>
+        </div>
+
+        <div id="statusMessage" class="status-message"></div>
+
+        <!-- GitHub Token 配置 -->
+        <div class="panel">
+            <h2>GitHub 配置</h2>
+            <div class="form-group">
+                <label>GitHub Token *</label>
+                <input type="password" id="githubToken" placeholder="输入你的 GitHub Personal Access Token">
+                <small>Token 会保存在浏览器，下次自动加载</small>
+            </div>
+            <button class="btn btn-secondary" onclick="saveToken()">保存 Token</button>
+        </div>
+
+        <!-- 上传歌曲 -->
+        <div class="panel">
+            <h2>上传歌曲</h2>
+            <form id="uploadSongForm">
+                <div class="form-group">
+                    <label>歌曲标题 *</label>
+                    <input type="text" id="songTitle" required placeholder="例：夜曲">
+                </div>
+
+                <div class="form-group">
+                    <label>歌手 *</label>
+                    <input type="text" id="songArtist" required placeholder="例：周杰伦">
+                </div>
+
+                <div class="form-group">
+                    <label>专辑</label>
+                    <input type="text" id="songAlbum" placeholder="例：十一月的萧邦">
+                </div>
+
+                <div class="form-group">
+                    <label>音频文件 * (建议文件名用英文或拼音，避免空格)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="songFile" accept="audio/*" required onchange="handleFileSelect('songFile', 'songFileInfo')">
+                        <div class="file-input-label">
+                            📁 点击选择音频文件 (MP3, WAV, etc.)
+                        </div>
+                    </div>
+                    <div id="songFileInfo" class="file-info" style="display:none;"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>封面图片 (建议文件名用英文或拼音，避免空格)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="coverFile" accept="image/*" onchange="handleFileSelect('coverFile', 'coverFileInfo')">
+                        <div class="file-input-label">
+                            🖼️ 点击选择封面图片 (JPG, PNG, etc.)
+                        </div>
+                    </div>
+                    <div id="coverFileInfo" class="file-info" style="display:none;"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>歌谱文件 (建议文件名用英文或拼音，避免空格)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="sheetFile" accept="image/*,.pdf" onchange="handleFileSelect('sheetFile', 'sheetFileInfo')">
+                        <div class="file-input-label">
+                            🎼 点击选择歌谱文件 (图片或PDF)
+                        </div>
+                    </div>
+                    <div id="sheetFileInfo" class="file-info" style="display:none;"></div>
+                </div>
+
+                <button type="submit" class="btn" id="uploadBtn">上传歌曲</button>
+            </form>
+        </div>
+
+        <!-- 歌曲列表 -->
+        <div class="panel">
+            <h2>已上传歌曲</h2>
+            <table class="song-table">
+                <thead>
+                    <tr>
+                        <th>封面</th>
+                        <th>标题</th>
+                        <th>歌手</th>
+                        <th>专辑</th>
+                        <th>歌谱</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="songTableBody">
+                    <tr>
+                        <td colspan="6" style="text-align:center;color:#999;">加载中...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // GitHub 配置
+        const GITHUB_USER = 'liu-qi6767';
+        const GITHUB_REPO = 'XF';
+        const GITHUB_BRANCH = 'main';
+        const CDN_BASE = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}@${GITHUB_BRANCH}`;
+
+        let songs = [];
+
+        // 加载保存的 Token
+        window.onload = function() {
+            const savedToken = localStorage.getItem('githubToken');
+            if (savedToken) {
+                document.getElementById('githubToken').value = savedToken;
+                showMessage('Token 已加载', 'success');
+            }
+            loadSongs();
+        };
+
+        // 保存 Token
+        function saveToken() {
+            const token = document.getElementById('githubToken').value.trim();
+            if (!token) {
+                showMessage('请输入 GitHub Token', 'error');
+                return;
+            }
+            localStorage.setItem('githubToken', token);
+            showMessage('Token 保存成功！', 'success');
+        }
+
+        // 显示消息
+        function showMessage(message, type) {
+            const msgEl = document.getElementById('statusMessage');
+            msgEl.textContent = message;
+            msgEl.className = `status-message ${type}`;
+            msgEl.style.display = 'block';
+            setTimeout(() => {
+                msgEl.style.display = 'none';
+            }, 5000);
+        }
+
+        // 处理文件选择
+        function handleFileSelect(inputId, infoId) {
+            const input = document.getElementById(inputId);
+            const infoEl = document.getElementById(infoId);
+
+            if (input.files.length > 0) {
+                const file = input.files[0];
+                const sizeMB = (file.size / 1024 / 1024).toFixed(2);
+                infoEl.textContent = `已选择: ${file.name} (${sizeMB} MB)`;
+                infoEl.style.display = 'block';
+
+                // 检查文件名
+                if (/[一-龥\s]/.test(file.name)) {
+                    infoEl.textContent += ' ⚠️ 建议使用英文文件名，避免中文和空格';
+                    infoEl.style.background = '#fff3cd';
+                    infoEl.style.color = '#856404';
+                }
+            } else {
+                infoEl.style.display = 'none';
+            }
+        }
+
+        // 上传文件到 GitHub
+        async function uploadFileToGitHub(file, path) {
+            const token = localStorage.getItem('githubToken');
+            if (!token) {
+                throw new Error('请先配置 GitHub Token');
+            }
+
+            // 读取文件为 base64
+            const base64Content = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const base64 = reader.result.split(',')[1];
+                    resolve(base64);
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+
+            // 上传到 GitHub
+            const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`;
+
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: `Upload ${file.name}`,
+                    content: base64Content,
+                    branch: GITHUB_BRANCH
+                })
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || '上传失败');
+            }
+
+            return await response.json();
+        }
+
+        // 更新 songs.json
+        async function updateSongsJson(newSong) {
+            const token = localStorage.getItem('githubToken');
+            if (!token) {
+                throw new Error('请先配置 GitHub Token');
+            }
+
+            // 获取当前 songs.json
+            const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/data/songs.json`;
+
+            let sha = null;
+            try {
+                const getResponse = await fetch(url, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                    }
+                });
+
+                if (getResponse.ok) {
+                    const data = await getResponse.json();
+                    sha = data.sha;
+                    const content = atob(data.content);
+                    songs = JSON.parse(content);
+                }
+            } catch (e) {
+                songs = [];
+            }
+
+            // 添加新歌曲
+            songs.push(newSong);
+
+            // 更新 songs.json
+            const content = btoa(unescape(encodeURIComponent(JSON.stringify(songs, null, 2))));
+
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: 'Update songs.json',
+                    content: content,
+                    sha: sha,
+                    branch: GITHUB_BRANCH
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('更新 songs.json 失败');
+            }
+        }
+
+        // 表单提交
+        document.getElementById('uploadSongForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const token = localStorage.getItem('githubToken');
+            if (!token) {
+                showMessage('请先配置并保存 GitHub Token', 'error');
+                return;
+            }
+
+            const title = document.getElementById('songTitle').value.trim();
+            const artist = document.getElementById('songArtist').value.trim();
+            const album = document.getElementById('songAlbum').value.trim();
+            const songFile = document.getElementById('songFile').files[0];
+            const coverFile = document.getElementById('coverFile').files[0];
+            const sheetFile = document.getElementById('sheetFile').files[0];
+
+            if (!title || !artist || !songFile) {
+                showMessage('请填写必填项', 'error');
+                return;
+            }
+
+            const uploadBtn = document.getElementById('uploadBtn');
+            uploadBtn.disabled = true;
+            uploadBtn.textContent = '上传中...';
+
+            try {
+                showMessage('正在上传音频文件...', 'info');
+
+                // 上传音频文件
+                const songPath = `songs/${Date.now()}_${songFile.name}`;
+                await uploadFileToGitHub(songFile, songPath);
+                const songUrl = `${CDN_BASE}/${songPath}`;
+
+                // 上传封面（如果有）
+                let coverUrl = null;
+                if (coverFile) {
+                    showMessage('正在上传封面图片...', 'info');
+                    const coverPath = `covers/${Date.now()}_${coverFile.name}`;
+                    await uploadFileToGitHub(coverFile, coverPath);
+                    coverUrl = `${CDN_BASE}/${coverPath}`;
+                }
+
+                // 上传歌谱（如果有）
+                let sheetUrl = null;
+                if (sheetFile) {
+                    showMessage('正在上传歌谱文件...', 'info');
+                    const sheetPath = `sheets/${Date.now()}_${sheetFile.name}`;
+                    await uploadFileToGitHub(sheetFile, sheetPath);
+                    sheetUrl = `${CDN_BASE}/${sheetPath}`;
+                }
+
+                // 更新 songs.json
+                showMessage('正在更新歌曲列表...', 'info');
+                const newSong = {
+                    id: Date.now(),
+                    title: title,
+                    artist: artist,
+                    album: album || '',
+                    url: songUrl,
+                    cover: coverUrl,
+                    sheetMusic: sheetUrl,
+                    duration: '0:00'
+                };
+
+                await updateSongsJson(newSong);
+
+                showMessage('✅ 上传成功！等待 2-5 分钟后刷新播放器即可看到新歌', 'success');
+
+                // 重置表单
+                document.getElementById('uploadSongForm').reset();
+                document.getElementById('songFileInfo').style.display = 'none';
+                document.getElementById('coverFileInfo').style.display = 'none';
+                document.getElementById('sheetFileInfo').style.display = 'none';
+
+                // 刷新列表
+                loadSongs();
+
+            } catch (error) {
+                console.error('上传失败:', error);
+                showMessage('❌ 上传失败: ' + error.message, 'error');
+            } finally {
+                uploadBtn.disabled = false;
+                uploadBtn.textContent = '上传歌曲';
+            }
+        });
+
+        // 加载歌曲列表
+        async function loadSongs() {
+            try {
+                const response = await fetch(`${CDN_BASE}/data/songs.json?t=` + Date.now());
+                songs = await response.json();
+                renderSongTable();
+            } catch (error) {
+                console.error('加载歌曲失败:', error);
+                document.getElementById('songTableBody').innerHTML = '<tr><td colspan="6" style="text-align:center;color:#999;">暂无歌曲</td></tr>';
+            }
+        }
+
+        // 渲染歌曲表格
+        function renderSongTable() {
+            const tbody = document.getElementById('songTableBody');
+
+            if (songs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#999;">暂无歌曲</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = songs.map(song => `
+                <tr>
+                    <td><img src="${song.cover || 'https://via.placeholder.com/50'}" alt="封面"></td>
+                    <td>${song.title}</td>
+                    <td>${song.artist}</td>
+                    <td>${song.album || '-'}</td>
+                    <td>${song.sheetMusic ? '<a href="' + song.sheetMusic + '" target="_blank">查看</a>' : '-'}</td>
+                    <td><button class="delete-btn" onclick="deleteSong(${song.id})">删除</button></td>
+                </tr>
+            `).join('');
+        }
+
+        // 删除歌曲
+        async function deleteSong(songId) {
+            if (!confirm('确定要删除这首歌曲吗？')) {
+                return;
+            }
+
+            const token = localStorage.getItem('githubToken');
+            if (!token) {
+                showMessage('请先配置 GitHub Token', 'error');
+                return;
+            }
+
+            try {
+                showMessage('正在删除...', 'info');
+
+                // 从数组中移除
+                songs = songs.filter(s => s.id !== songId);
+
+                // 获取当前 songs.json 的 sha
+                const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/data/songs.json`;
+                const getResponse = await fetch(url, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                    }
+                });
+
+                const data = await getResponse.json();
+                const sha = data.sha;
+
+                // 更新 songs.json
+                const content = btoa(unescape(encodeURIComponent(JSON.stringify(songs, null, 2))));
+
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: 'Delete song',
+                        content: content,
+                        sha: sha,
+                        branch: GITHUB_BRANCH
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('删除失败');
+                }
+
+                showMessage('✅ 删除成功！', 'success');
+                renderSongTable();
+
+            } catch (error) {
+                console.error('删除失败:', error);
+                showMessage('❌ 删除失败: ' + error.message, 'error');
+            }
+        }
+    </script>
+</body>
+</html>
