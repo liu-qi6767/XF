@@ -1,12 +1,22 @@
 [
   {
     "id": 1,
-    "title": "测试歌曲",
-    "artist": "测试歌手",
-    "album": "测试专辑",
+    "title": "æµè¯æ­æ²",
+    "artist": "æµè¯æ­æ",
+    "album": "æµè¯ä¸è¾",
     "url": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/songs/OurBelovedKing.mp3",
     "cover": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/covers/2026-08-21_160508_784.jpg",
     "sheetMusic": null,
     "duration": "3:45"
+  },
+  {
+    "id": 1787645623890,
+    "title": "OurBelovedKing",
+    "artist": "111",
+    "album": "11",
+    "url": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/songs/1787645612581_OurBelovedKing.mp3",
+    "cover": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/covers/1787645618591_2026-08-21_160508_784.jpg",
+    "sheetMusic": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/sheets/1787645620356_2.png",
+    "duration": "0:00"
   }
 ]
