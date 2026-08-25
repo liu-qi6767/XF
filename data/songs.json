@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "title": "æµè¯æ­æ²",
-    "artist": "æµè¯æ­æ",
-    "album": "æµè¯ä¸è¾",
+    "title": "Ã¦ÂµÂÃ¨Â¯ÂÃ¦Â­ÂÃ¦ÂÂ²",
+    "artist": "Ã¦ÂµÂÃ¨Â¯ÂÃ¦Â­ÂÃ¦ÂÂ",
+    "album": "Ã¦ÂµÂÃ¨Â¯ÂÃ¤Â¸ÂÃ¨Â¾Â",
     "url": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/songs/OurBelovedKing.mp3",
     "cover": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/covers/2026-08-21_160508_784.jpg",
     "sheetMusic": null,
@@ -17,6 +17,16 @@
     "url": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/songs/1787645612581_OurBelovedKing.mp3",
     "cover": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/covers/1787645618591_2026-08-21_160508_784.jpg",
     "sheetMusic": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/sheets/1787645620356_2.png",
+    "duration": "0:00"
+  },
+  {
+    "id": 1787645810760,
+    "title": "11",
+    "artist": "11",
+    "album": "11",
+    "url": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/songs/1787645798968_OurBelovedKing.mp3",
+    "cover": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/covers/1787645805334_2026-08-21_160508_784.jpg",
+    "sheetMusic": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/sheets/1787645807299_2.png",
     "duration": "0:00"
   }
 ]
