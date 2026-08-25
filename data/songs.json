@@ -1,22 +1,22 @@
 [
   {
     "id": 1,
-    "title": "æµè¯æ­æ²",
-    "artist": "æµè¯æ­æ",
-    "album": "æµè¯ä¸è¾",
-    "url": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/songs/æä»¬ç±æ´çç Our Beloved King.mp3",
-    "cover": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/covers/å¾®ä¿¡å¾ç_2026-08-21_160508_784.jpg",
+    "title": "测试歌曲",
+    "artist": "测试歌手",
+    "album": "测试专辑",
+    "url": "https://liu-qi6767.github.io/XF/songs/song1.mp3",
+    "cover": "https://liu-qi6767.github.io/XF/covers/cover1.jpg",
     "sheetMusic": null,
     "duration": "3:45"
   },
   {
-    "id": 1787647969068,
-    "title": "11",
-    "artist": "11",
-    "album": "11",
-    "url": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/songs/1787647956585_OurBelovedKing.mp3",
-    "cover": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/covers/1787647962796_1.jpeg",
-    "sheetMusic": "https://cdn.jsdelivr.net/gh/liu-qi6767/XF@main/sheets/1787647965350_2.png",
-    "duration": "0:00"
+    "id": 2,
+    "title": "Our Beloved King",
+    "artist": "艺术家",
+    "album": "专辑",
+    "url": "https://liu-qi6767.github.io/XF/songs/song2.mp3",
+    "cover": "https://liu-qi6767.github.io/XF/covers/cover2.jpg",
+    "sheetMusic": "https://liu-qi6767.github.io/XF/sheets/1787647965350_2.png",
+    "duration": "3:30"
   }
 ]
