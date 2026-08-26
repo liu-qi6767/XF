@@ -255,6 +255,29 @@
             color: rgba(255,255,255,0.8);
         }
 
+        /* 手机端特殊样式 */
+        @media (max-width: 768px) {
+            .song-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+            }
+
+            .song-item-info {
+                text-align: left;
+                flex: 1;
+            }
+
+            .song-item-title {
+                text-align: left;
+            }
+
+            .song-item-duration {
+                text-align: right;
+            }
+        }
+
         .sheet-music-btn {
             background: #28a745;
             color: white;
