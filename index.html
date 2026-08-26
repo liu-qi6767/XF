@@ -258,24 +258,40 @@
 
         /* 手机端特殊样式 */
         @media (max-width: 768px) {
+            .song-list {
+                padding: 20px 15px;
+            }
+
             .song-item {
                 display: flex;
+                flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
+                padding: 12px 15px;
                 text-align: left;
             }
 
             .song-item-info {
-                text-align: left;
                 flex: 1;
+                text-align: left;
+                padding-right: 10px;
             }
 
             .song-item-title {
                 text-align: left;
+                width: 100%;
+                display: block;
+                font-size: 1em;
             }
 
             .song-item-duration {
                 text-align: right;
+                flex-shrink: 0;
+                min-width: 50px;
+            }
+
+            h1 {
+                font-size: 1.5em;
             }
         }
 
