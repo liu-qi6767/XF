@@ -64,48 +64,64 @@
         }
 
         .control-btn {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 22px;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
 
         .control-btn:hover {
-            background: #764ba2;
             transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
         }
 
         .control-btn.play-pause {
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
+            width: 70px;
+            height: 70px;
+            font-size: 28px;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         }
 
         .sheet-music-btn {
-            background: #28a745;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 22px;
             transition: all 0.3s;
             display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
         }
 
         .sheet-music-btn:hover {
-            background: #218838;
             transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
+        }
+
+        .sheet-music-btn:active {
+            transform: scale(0.95);
         }
 
         .sheet-music-btn.visible {
-            display: block;
+            display: flex;
         }
 
         .sheet-music-modal {
