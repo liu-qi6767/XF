@@ -436,13 +436,8 @@
         function renderSongList() {
             songListEl.innerHTML = songs.map((song, index) => `
                 <div class="song-item ${index === currentSongIndex ? 'active' : ''}" onclick="playSong(${index})">
-                    ${song.cover ?
-                        `<img class="song-item-cover" src="${song.cover}" alt="封面">` :
-                        `<div class="song-item-cover">🎵</div>`
-                    }
                     <div class="song-item-info">
                         <div class="song-item-title">${song.title}</div>
-                        <div class="song-item-artist">${song.artist}</div>
                     </div>
                     <span class="song-item-duration">${song.duration || '0:00'}</span>
                 </div>
