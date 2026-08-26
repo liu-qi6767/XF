@@ -223,13 +223,15 @@
         }
 
         .song-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             padding: 15px 20px;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s;
             margin-bottom: 10px;
             background: white;
-            text-align: left;
         }
 
         .song-item:hover {
@@ -246,11 +248,14 @@
         }
 
         .song-item-info {
-            display: none;
+            flex: 1;
+            text-align: left;
         }
 
         .song-item-title {
-            display: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: left;
         }
 
         .song-item-artist {
@@ -258,7 +263,13 @@
         }
 
         .song-item-duration {
-            display: none;
+            color: #999;
+            font-size: 1em;
+            margin-left: 15px;
+        }
+
+        .song-item.active .song-item-duration {
+            color: rgba(255,255,255,0.8);
         }
 
         /* 手机端特殊样式 */
@@ -431,7 +442,10 @@
         function renderSongList() {
             songListEl.innerHTML = songs.map((song, index) => `
                 <div class="song-item ${index === currentSongIndex ? 'active' : ''}" onclick="playSong(${index})">
-                    ${song.title}　　　${song.duration || '0:00'}
+                    <div class="song-item-info">
+                        <div class="song-item-title">${song.title}</div>
+                    </div>
+                    <span class="song-item-duration">${song.duration || '0:00'}</span>
                 </div>
             `).join('');
         }
