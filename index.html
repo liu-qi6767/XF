@@ -44,16 +44,6 @@
             margin-bottom: 20px;
         }
 
-        .album-cover {
-            width: 200px;
-            height: 200px;
-            border-radius: 10px;
-            object-fit: cover;
-            margin: 0 auto 20px;
-            display: block;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
         .song-title {
             font-size: 1.8em;
             color: #333;
@@ -162,6 +152,13 @@
             border-radius: 8px;
             object-fit: cover;
             margin-right: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
         }
 
         .song-item-info {
@@ -240,7 +237,6 @@
 
         <div class="player-container">
             <div class="current-song">
-                <img id="albumCover" class="album-cover" src="https://via.placeholder.com/200?text=No+Song" alt="封面">
                 <div class="song-title" id="songTitle">请选择歌曲</div>
                 <div class="song-artist" id="songArtist">-</div>
             </div>
@@ -323,7 +319,10 @@
         function renderSongList() {
             songListEl.innerHTML = songs.map((song, index) => `
                 <div class="song-item ${index === currentSongIndex ? 'active' : ''}" onclick="playSong(${index})">
-                    <img class="song-item-cover" src="${song.cover || 'https://via.placeholder.com/60?text=Cover'}" alt="封面">
+                    ${song.cover ?
+                        `<img class="song-item-cover" src="${song.cover}" alt="封面">` :
+                        `<div class="song-item-cover">🎵</div>`
+                    }
                     <div class="song-item-info">
                         <div class="song-item-title">${song.title}</div>
                         <div class="song-item-artist">${song.artist}</div>
@@ -343,7 +342,6 @@
             audioPlayer.src = song.url;
             songTitle.textContent = song.title;
             songArtist.textContent = song.artist;
-            albumCover.src = song.cover || 'https://via.placeholder.com/200?text=Cover';
 
             renderSongList();
         }
