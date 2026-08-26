@@ -278,10 +278,10 @@
         const GITHUB_REPO = 'XF';
         const GITHUB_BRANCH = 'main';
 
-        // 使用 GitHub Pages 域名（避免跟踪保护阻止）
-        const CDN_BASE = `https://liu-qi6767.github.io/XF`;
+        // 使用 jsDelivr CDN 加速（文件名已改为英文，不会被浏览器阻止）
+        const CDN_BASE = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}@${GITHUB_BRANCH}`;
 
-        // 歌曲数据 URL
+        // 歌曲数据 URL（也使用 CDN）
         const SONGS_JSON_URL = `${CDN_BASE}/data/songs.json`;
 
         let songs = [];
