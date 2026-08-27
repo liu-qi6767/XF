@@ -4,8 +4,8 @@
     "title": "测试歌曲",
     "artist": "测试歌手",
     "album": "测试专辑",
-    "url": "https://liu-qi6767.github.io/XF/songs/song1.mp3",
-    "cover": "https://liu-qi6767.github.io/XF/covers/cover1.jpg",
+    "url": "https://shige-music.github.io/XF/songs/song1.mp3",
+    "cover": "https://shige-music.github.io/XF/covers/cover1.jpg",
     "sheetMusic": null,
     "duration": "3:45"
   },
@@ -14,9 +14,9 @@
     "title": "Our Beloved King",
     "artist": "艺术家",
     "album": "专辑",
-    "url": "https://liu-qi6767.github.io/XF/songs/song2.mp3",
-    "cover": "https://liu-qi6767.github.io/XF/covers/cover2.jpg",
-    "sheetMusic": "https://liu-qi6767.github.io/XF/sheets/1787647965350_2.png",
+    "url": "https://shige-music.github.io/XF/songs/song2.mp3",
+    "cover": "https://shige-music.github.io/XF/covers/cover2.jpg",
+    "sheetMusic": "https://shige-music.github.io/XF/sheets/1787647965350_2.png",
     "duration": "3:30"
   }
 ]
