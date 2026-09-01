@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "title": "测试歌曲",
-    "artist": "测试歌手",
-    "album": "测试专辑",
+    "title": "æµè¯æ­æ²",
+    "artist": "æµè¯æ­æ",
+    "album": "æµè¯ä¸è¾",
     "url": "https://shige-music.github.io/XF/songs/song1.mp3",
     "cover": "https://shige-music.github.io/XF/covers/cover1.jpg",
     "sheetMusic": null,
@@ -12,11 +12,21 @@
   {
     "id": 2,
     "title": "Our Beloved King",
-    "artist": "艺术家",
-    "album": "专辑",
+    "artist": "èºæ¯å®¶",
+    "album": "ä¸è¾",
     "url": "https://shige-music.github.io/XF/songs/song2.mp3",
     "cover": "https://shige-music.github.io/XF/covers/cover2.jpg",
     "sheetMusic": "https://shige-music.github.io/XF/sheets/1787647965350_2.png",
     "duration": "3:30"
+  },
+  {
+    "id": 1788242878819,
+    "title": "111",
+    "artist": "11",
+    "album": "",
+    "url": "https://cdn.jsdelivr.net/gh/shige-music/XF@main/songs/1788242863705_带我进入幔内.mp3",
+    "cover": null,
+    "sheetMusic": null,
+    "duration": "0:00"
   }
 ]
