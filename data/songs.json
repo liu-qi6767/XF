@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "title": "æµè¯æ­æ²",
-    "artist": "æµè¯æ­æ",
-    "album": "æµè¯ä¸è¾",
+    "title": "ÃÂ¦ÃÂµÃÂÃÂ¨ÃÂ¯ÃÂÃÂ¦ÃÂ­ÃÂÃÂ¦ÃÂÃÂ²",
+    "artist": "ÃÂ¦ÃÂµÃÂÃÂ¨ÃÂ¯ÃÂÃÂ¦ÃÂ­ÃÂÃÂ¦ÃÂÃÂ",
+    "album": "ÃÂ¦ÃÂµÃÂÃÂ¨ÃÂ¯ÃÂÃÂ¤ÃÂ¸ÃÂÃÂ¨ÃÂ¾ÃÂ",
     "url": "https://shige-music.github.io/XF/songs/song1.mp3",
     "cover": "https://shige-music.github.io/XF/covers/cover1.jpg",
     "sheetMusic": null,
@@ -12,8 +12,8 @@
   {
     "id": 2,
     "title": "Our Beloved King",
-    "artist": "èºæ¯å®¶",
-    "album": "ä¸è¾",
+    "artist": "ÃÂ¨ÃÂÃÂºÃÂ¦ÃÂÃÂ¯ÃÂ¥ÃÂ®ÃÂ¶",
+    "album": "ÃÂ¤ÃÂ¸ÃÂÃÂ¨ÃÂ¾ÃÂ",
     "url": "https://shige-music.github.io/XF/songs/song2.mp3",
     "cover": "https://shige-music.github.io/XF/covers/cover2.jpg",
     "sheetMusic": "https://shige-music.github.io/XF/sheets/1787647965350_2.png",
@@ -24,9 +24,29 @@
     "title": "111",
     "artist": "11",
     "album": "",
-    "url": "https://cdn.jsdelivr.net/gh/shige-music/XF@main/songs/1788242863705_带我进入幔内.mp3",
+    "url": "https://cdn.jsdelivr.net/gh/shige-music/XF@main/songs/1788242863705_Ã¥Â¸Â¦Ã¦ÂÂÃ¨Â¿ÂÃ¥ÂÂ¥Ã¥Â¹ÂÃ¥ÂÂ.mp3",
     "cover": null,
     "sheetMusic": null,
+    "duration": "0:00"
+  },
+  {
+    "id": 1788249891933,
+    "title": "ç¾ä¸½",
+    "artist": "11",
+    "album": "",
+    "url": "https://cdn.jsdelivr.net/gh/shige-music/XF@main/songs/1788249884486_OurBelovedKing.mp3",
+    "cover": null,
+    "sheetMusic": null,
+    "duration": "0:00"
+  },
+  {
+    "id": 1788250707430,
+    "title": "诗篇112篇1-3节",
+    "artist": "XF",
+    "album": "XF",
+    "url": "https://cdn.jsdelivr.net/gh/shige-music/XF@main/songs/1788250694434_112.1-3.mp3",
+    "cover": null,
+    "sheetMusic": "https://cdn.jsdelivr.net/gh/shige-music/XF@main/sheets/1788250704585_02678966d17f829a16ad0ee7a714e455.jpg",
     "duration": "0:00"
   }
 ]
