@@ -733,7 +733,8 @@
         // 加载歌曲列表
         async function loadSongs() {
             try {
-                const response = await fetch(`${CDN_BASE}/data/songs.json?t=` + Date.now());
+                // 直接从 GitHub Pages 加载，实时更新
+                const response = await fetch(`https://${GITHUB_USER}.github.io/${GITHUB_REPO}/data/songs.json?t=` + Date.now());
                 songs = await response.json();
                 renderSongTable();
             } catch (error) {
