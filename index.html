@@ -400,8 +400,8 @@
         // 使用 jsDelivr CDN 加速（文件名已改为英文，不会被浏览器阻止）
         const CDN_BASE = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}@${GITHUB_BRANCH}`;
 
-        // 歌曲数据 URL（也使用 CDN）
-        const SONGS_JSON_URL = `${CDN_BASE}/data/songs.json`;
+        // 歌曲数据直接从 GitHub Pages 加载（实时更新，不用等 CDN 缓存）
+        const SONGS_JSON_URL = `https://${GITHUB_USER}.github.io/${GITHUB_REPO}/data/songs.json`;
 
         let songs = [];
         let currentSongIndex = 0;
