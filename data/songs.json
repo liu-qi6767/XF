@@ -1,15 +1,5 @@
 [
   {
-    "id": 1,
-    "title": "ÃÂ¦ÃÂµÃÂÃÂ¨ÃÂ¯ÃÂÃÂ¦ÃÂ­ÃÂÃÂ¦ÃÂÃÂ²",
-    "artist": "ÃÂ¦ÃÂµÃÂÃÂ¨ÃÂ¯ÃÂÃÂ¦ÃÂ­ÃÂÃÂ¦ÃÂÃÂ",
-    "album": "ÃÂ¦ÃÂµÃÂÃÂ¨ÃÂ¯ÃÂÃÂ¤ÃÂ¸ÃÂÃÂ¨ÃÂ¾ÃÂ",
-    "url": "https://shige-music.github.io/XF/songs/song1.mp3",
-    "cover": "https://shige-music.github.io/XF/covers/cover1.jpg",
-    "sheetMusic": null,
-    "duration": "3:45"
-  },
-  {
     "id": 2,
     "title": "Our Beloved King",
     "artist": "ÃÂ¨ÃÂÃÂºÃÂ¦ÃÂÃÂ¯ÃÂ¥ÃÂ®ÃÂ¶",
