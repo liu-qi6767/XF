@@ -615,6 +615,15 @@
             });
         }
 
+        // 清理文件名：移除中文和特殊字符，保留扩展名
+        function sanitizeFileName(fileName) {
+            const ext = fileName.substring(fileName.lastIndexOf('.'));
+            const nameWithoutExt = fileName.substring(0, fileName.lastIndexOf('.'));
+            // 只保留字母、数字、下划线、连字符
+            const cleaned = nameWithoutExt.replace(/[^a-zA-Z0-9_-]/g, '_');
+            return cleaned + ext;
+        }
+
         // 更新 songs.json
         async function updateSongsJson(newSong) {
             const token = localStorage.getItem('githubToken');
@@ -701,8 +710,9 @@
 
                 showMessage('正在上传音频文件...', 'info');
 
-                // 上传音频文件
-                const songPath = `songs/${Date.now()}_${songFile.name}`;
+                // 上传音频文件（清理文件名）
+                const cleanSongFileName = sanitizeFileName(songFile.name);
+                const songPath = `songs/${Date.now()}_${cleanSongFileName}`;
                 await uploadFileToGitHub(songFile, songPath);
                 const songUrl = `${CDN_BASE}/${songPath}`;
 
@@ -710,7 +720,8 @@
                 let coverUrl = null;
                 if (coverFile) {
                     showMessage('正在上传封面图片...', 'info');
-                    const coverPath = `covers/${Date.now()}_${coverFile.name}`;
+                    const cleanCoverFileName = sanitizeFileName(coverFile.name);
+                    const coverPath = `covers/${Date.now()}_${cleanCoverFileName}`;
                     await uploadFileToGitHub(coverFile, coverPath);
                     coverUrl = `${CDN_BASE}/${coverPath}`;
                 }
@@ -719,7 +730,8 @@
                 let sheetUrl = null;
                 if (sheetFile) {
                     showMessage('正在上传歌谱文件...', 'info');
-                    const sheetPath = `sheets/${Date.now()}_${sheetFile.name}`;
+                    const cleanSheetFileName = sanitizeFileName(sheetFile.name);
+                    const sheetPath = `sheets/${Date.now()}_${cleanSheetFileName}`;
                     await uploadFileToGitHub(sheetFile, sheetPath);
                     sheetUrl = `${CDN_BASE}/${sheetPath}`;
                 }
