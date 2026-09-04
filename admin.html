@@ -655,8 +655,14 @@
             // 添加新歌曲
             songs.push(newSong);
 
-            // 更新 songs.json
-            const content = btoa(unescape(encodeURIComponent(JSON.stringify(songs, null, 2))));
+            // 更新 songs.json（使用正确的UTF-8编码）
+            const jsonString = JSON.stringify(songs, null, 2);
+            const utf8Bytes = new TextEncoder().encode(jsonString);
+            let binaryString = '';
+            for (let i = 0; i < utf8Bytes.length; i++) {
+                binaryString += String.fromCharCode(utf8Bytes[i]);
+            }
+            const content = btoa(binaryString);
 
             const response = await fetch(url, {
                 method: 'PUT',
